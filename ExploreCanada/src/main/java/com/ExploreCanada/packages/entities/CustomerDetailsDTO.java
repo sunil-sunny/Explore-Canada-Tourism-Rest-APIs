@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -23,20 +21,14 @@ public class CustomerDetailsDTO {
 	@NotNull(message = "userId can not be null")
 	@NotEmpty(message = "userId can not be empty")
 	private String lastName;
-	
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 	private String address;
 	private String country;
 	private String pinCode;
-	
-	
 	//@JsonIgnore
 	@JsonProperty(access = Access.WRITE_ONLY)
-	
 	private String password;
-	
-	
 	//@JsonIgnore
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String securityAnswer;

@@ -2,9 +2,9 @@ package com.ExploreCanada.packages.service;
 
 import java.util.List;
 
-import com.ExploreCanada.packages.entities.PackageDetails;
+import com.ExploreCanada.packages.entities.PackageDetailsDTO;
 
 public interface PackageListService {
 
-	public List<PackageDetails> findAll();
+	public List<PackageDetailsDTO> findAll();
 }

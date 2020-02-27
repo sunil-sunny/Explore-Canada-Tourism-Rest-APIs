@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ExploreCanada.packages.entities.PackageDetails;
+import com.ExploreCanada.packages.entities.PackageDetailsDTO;
 import com.ExploreCanada.packages.service.PackageListService;
 
 @RestController
@@ -24,7 +24,7 @@ public class PackageListRestController {
 	}
 	
 	@GetMapping("/packagelist")
-	public List<PackageDetails> findAll(){
+	public List<PackageDetailsDTO> findAll(){
 		return packageListService.findAll();
 	}
 

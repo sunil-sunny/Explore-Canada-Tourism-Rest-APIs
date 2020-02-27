@@ -3,7 +3,6 @@ package com.ExploreCanada.packages.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.ExploreCanada.packages.Dao.RegisterUserDao;
 import com.ExploreCanada.packages.entities.CustomerDetails;
 import com.ExploreCanada.packages.entities.CustomerDetailsDTO;
