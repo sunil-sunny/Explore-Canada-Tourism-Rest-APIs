@@ -48,7 +48,7 @@ public class CustomerDetailsDTO {
 	
 	public CustomerDetailsDTO(CustomerDetails customerDetailsDTO) {
 		super();
-		this.userId = customerDetailsDTO.getUserId();
+		this.userId = customerDetailsDTO.getUsername();
 		this.firstName = customerDetailsDTO.getFirstName();
 		this.lastName = customerDetailsDTO.getLastName();
 		this.dateOfBirth = customerDetailsDTO.getDateOfBirth();

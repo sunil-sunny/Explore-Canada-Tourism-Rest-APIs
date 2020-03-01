@@ -15,7 +15,7 @@ public class CustomerDetails {
 	
 	@Id
 	@Column(name="user_id",nullable = false)
-	private String userId;
+	private String username;
 	@Column(name="first_name",nullable = false)
 	private String firstName;
 	@Column(name="last_name",nullable = false)
@@ -35,10 +35,14 @@ public class CustomerDetails {
 	private String securityAnswer;
 	@Column(name="role")
 	private String role;
+	
+	public CustomerDetails() {
+      super();
+    }
 	public CustomerDetails(String userId, String firstName, String lastName, Date dateOfBirth, String address,
 			String country, String pinCode, String password, String securityAnswer, String role) {
 		super();
-		this.userId = userId;
+		this.username = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
@@ -52,7 +56,7 @@ public class CustomerDetails {
 	
 	public CustomerDetails(CustomerDetailsDTO customerDetailsDTO) {
 		super();
-		this.userId = customerDetailsDTO.getUserId();
+		this.username = customerDetailsDTO.getUserId();
 		this.firstName = customerDetailsDTO.getFirstName();
 		this.lastName = customerDetailsDTO.getLastName();
 		this.dateOfBirth = customerDetailsDTO.getDateOfBirth();
@@ -65,11 +69,11 @@ public class CustomerDetails {
 	}
 	
 	
-	public String getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUsername(String userId) {
+		this.username = userId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -127,7 +131,7 @@ public class CustomerDetails {
 	}
 	@Override
 	public String toString() {
-		return "CustomerDetails [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName
+		return "CustomerDetails [userId=" + username + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", dateOfBirth=" + dateOfBirth + ", address=" + address + ", country=" + country + ", pinCode="
 				+ pinCode + ", password=" + password + ", securityAnswer=" + securityAnswer + ", role=" + role + "]";
 	}
