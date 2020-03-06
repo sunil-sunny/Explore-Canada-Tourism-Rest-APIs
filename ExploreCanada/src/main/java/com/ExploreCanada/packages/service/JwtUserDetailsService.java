@@ -11,8 +11,8 @@ import com.ExploreCanada.packages.userclasses.UserDetailsImpl;
 import com.ExploreCanada.packages.userclasses.UserRepository;
 
 
-@Service
-public class MyUserDetailsService implements UserDetailsService {
+@Service("userDetailsService")
+public class JwtUserDetailsService implements UserDetailsService {
 	
 	@Autowired
 	private UserRepository userRepository;

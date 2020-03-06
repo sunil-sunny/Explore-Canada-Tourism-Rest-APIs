@@ -1,6 +1,4 @@
-package com.ExploreCanada.packages.security;
-
-
+/*package com.ExploreCanada.packages.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,18 +17,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
-	
-	
-	
-	
-	 @Override protected void configure(HttpSecurity http) throws Exception {
+	@Override 
+	protected void configure(HttpSecurity http) throws Exception {
 	 
 	 http.csrf().disable();
 	 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 	 http.authorizeRequests()
 	 .antMatchers("/api/register").permitAll();
-	 http.authorizeRequests().anyRequest().authenticated();
 	 http.formLogin()
 	 .loginProcessingUrl("/login").permitAll();
 	 }
@@ -44,4 +37,4 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		return provider;
 	}
 
-}
+}*/

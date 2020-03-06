@@ -1,7 +1,7 @@
 package com.ExploreCanada.packages.entities;
 
-import java.util.Date;
 
+import java.sql.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
@@ -32,6 +32,10 @@ public class CustomerDetailsDTO {
 	//@JsonIgnore
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String securityAnswer;
+	public CustomerDetailsDTO() {
+		
+		super();
+	}
 	public CustomerDetailsDTO(String userId, String firstName, String lastName, Date dateOfBirth, String address,
 			String country, String pinCode, String password, String securityAnswer) {
 		super();
@@ -46,17 +50,17 @@ public class CustomerDetailsDTO {
 		this.securityAnswer = securityAnswer;
 	}
 	
-	public CustomerDetailsDTO(CustomerDetails customerDetailsDTO) {
+	public CustomerDetailsDTO(CustomerDetails customerDetails) {
 		super();
-		this.userId = customerDetailsDTO.getUsername();
-		this.firstName = customerDetailsDTO.getFirstName();
-		this.lastName = customerDetailsDTO.getLastName();
-		this.dateOfBirth = customerDetailsDTO.getDateOfBirth();
-		this.address = customerDetailsDTO.getAddress();
-		this.country = customerDetailsDTO.getCountry();
-		this.pinCode = customerDetailsDTO.getPinCode();
-		this.password = customerDetailsDTO.getPassword();
-		this.securityAnswer = customerDetailsDTO.getSecurityAnswer();
+		this.userId = customerDetails.getUsername();
+		this.firstName = customerDetails.getFirstName();
+		this.lastName = customerDetails.getLastName();
+		this.dateOfBirth = (Date) customerDetails.getDateOfBirth();
+		this.address = customerDetails.getAddress();
+		this.country = customerDetails.getCountry();
+		this.pinCode = customerDetails.getPinCode();
+		this.password = customerDetails.getPassword();
+		this.securityAnswer = customerDetails.getSecurityAnswer();
 		//this.role = "user";
 	}
 	
@@ -119,7 +123,7 @@ public class CustomerDetailsDTO {
 	public String toString() {
 		return "CustomerDetailsDTO [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", dateOfBirth=" + dateOfBirth + ", address=" + address + ", country=" + country + ", pinCode="
-				+ pinCode + ", password=" + password + ", securityAnswer=" + securityAnswer + "]";
+				+ pinCode + ", password=" + password + ", securityAnswer=" + securityAnswer + "]]";
 	}
 
 }

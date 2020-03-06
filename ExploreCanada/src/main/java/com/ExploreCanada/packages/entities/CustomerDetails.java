@@ -135,4 +135,5 @@ public class CustomerDetails {
 				+ ", dateOfBirth=" + dateOfBirth + ", address=" + address + ", country=" + country + ", pinCode="
 				+ pinCode + ", password=" + password + ", securityAnswer=" + securityAnswer + ", role=" + role + "]";
 	}
+	
 }

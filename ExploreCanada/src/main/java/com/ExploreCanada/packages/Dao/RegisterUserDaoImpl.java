@@ -1,11 +1,9 @@
 package com.ExploreCanada.packages.Dao;
 
 import javax.persistence.EntityManager;
-
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.ExploreCanada.packages.entities.CustomerDetails;
 
 @Repository
