@@ -39,8 +39,11 @@ public class JwtAuthenticationController {
 				.loadUserByUsername(authenticationRequest.getUsername());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
+		System.out.println("Token is :"+token);
+		JwtResponse tokenResponse=new JwtResponse(token);
+		System.out.println("Token response is "+tokenResponse);
 
-		return ResponseEntity.ok(new JwtResponse(token));
+		return ResponseEntity.ok(tokenResponse);
 	}
 
 	private void authenticate(String username, String password) throws Exception {

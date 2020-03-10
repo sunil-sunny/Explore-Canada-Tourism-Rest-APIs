@@ -54,11 +54,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable();
 				// dont authenticate this particular request
 		httpSecurity.authorizeRequests().antMatchers("/api/register").permitAll();
-				httpSecurity.authorizeRequests().antMatchers("/authenticate").permitAll().
-				// all other requests need to be authenticated
+		httpSecurity.authorizeRequests().antMatchers("/send/otp/***").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/verify/otp/***").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/authenticate").permitAll().
+			
 				anyRequest().authenticated().and().
-				// make sure we use stateless session; session won't be used to
-				// store user's state.
+				
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
