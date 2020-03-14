@@ -37,4 +37,19 @@ public class PakageListServiceImpl implements PackageListService {
 		return packageListDto;
 	}
 
+	@Override
+	public List<PackageDetailsDTO> findByCity(String cityName) {
+		List<PackageDetailsDTO> packageListDto=new ArrayList<PackageDetailsDTO>();
+		List<PackageDetails> packageList=packageListDao.findByCity(cityName);
+		PackageDetailsDTO p=null;
+		for(PackageDetails packageDetails:packageList) {
+			
+			p=new PackageDetailsDTO(packageDetails);
+			packageListDto.add(p);
+			
+		}
+		
+		return packageListDto;
+	}
+
 }

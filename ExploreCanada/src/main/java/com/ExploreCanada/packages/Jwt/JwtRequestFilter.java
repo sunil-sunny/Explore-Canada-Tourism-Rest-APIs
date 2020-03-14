@@ -20,6 +20,18 @@ import com.ExploreCanada.packages.service.JwtUserDetailsService;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+	
+	private String username;
+	
+	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	@Autowired
 	private JwtUserDetailsService jwtUserDetailsService;
@@ -32,7 +44,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		final String requestTokenHeader = request.getHeader("security");
-		System.out.println("sent token"+requestTokenHeader);
+		
+		//System.out.println("sent token"+requestTokenHeader);
 
 		String username = null;
 		String jwtToken = null;
@@ -42,6 +55,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			jwtToken = requestTokenHeader.substring(6);
 			try {
 				username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+				this.setUsername(username);
+				System.out.println(username);
 			} catch (IllegalArgumentException e) {
 				System.out.println("Unable to get JWT Token");
 			} catch (Exception e) {

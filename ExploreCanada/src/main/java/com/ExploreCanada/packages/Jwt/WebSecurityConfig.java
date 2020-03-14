@@ -54,14 +54,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable();
 				// dont authenticate this particular request
 		httpSecurity.authorizeRequests().antMatchers("/api/register").permitAll();
-		httpSecurity.authorizeRequests().antMatchers("/send/otp/***").permitAll();
-		httpSecurity.authorizeRequests().antMatchers("/verify/otp/***").permitAll();
-		httpSecurity.authorizeRequests().antMatchers("/authenticate").permitAll().
-			
-				anyRequest().authenticated().and().
-				
+		httpSecurity.authorizeRequests().antMatchers("/api/packagelist").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/authenticate").permitAll().anyRequest().authenticated().and().
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
+	
 
 		// Add a filter to validate the tokens with every request
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

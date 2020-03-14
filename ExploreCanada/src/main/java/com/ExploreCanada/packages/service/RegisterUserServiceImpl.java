@@ -11,6 +11,7 @@ import com.ExploreCanada.packages.entities.CustomerDetailsDTO;
 @Repository
 public class RegisterUserServiceImpl implements RegisterUserService {
 	
+	@Autowired
 	private RegisterUserDao registerUserDao;
 	
 	@Autowired

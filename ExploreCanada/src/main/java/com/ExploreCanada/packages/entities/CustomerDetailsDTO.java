@@ -32,12 +32,13 @@ public class CustomerDetailsDTO {
 	//@JsonIgnore
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String securityAnswer;
+	private String mobileNumber;
 	public CustomerDetailsDTO() {
 		
 		super();
 	}
 	public CustomerDetailsDTO(String userId, String firstName, String lastName, Date dateOfBirth, String address,
-			String country, String pinCode, String password, String securityAnswer) {
+			String country, String pinCode, String password, String securityAnswer,String mobileNumber) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -48,6 +49,7 @@ public class CustomerDetailsDTO {
 		this.pinCode = pinCode;
 		this.password = password;
 		this.securityAnswer = securityAnswer;
+		this.mobileNumber=mobileNumber;
 	}
 	
 	public CustomerDetailsDTO(CustomerDetails customerDetails) {
@@ -61,6 +63,7 @@ public class CustomerDetailsDTO {
 		this.pinCode = customerDetails.getPinCode();
 		this.password = customerDetails.getPassword();
 		this.securityAnswer = customerDetails.getSecurityAnswer();
+		this.mobileNumber=customerDetails.getMobileNumber();
 		//this.role = "user";
 	}
 	
@@ -118,6 +121,12 @@ public class CustomerDetailsDTO {
 	}
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
+	}
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 	@Override
 	public String toString() {

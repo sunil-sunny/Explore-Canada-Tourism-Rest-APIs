@@ -35,12 +35,14 @@ public class CustomerDetails {
 	private String securityAnswer;
 	@Column(name="role")
 	private String role;
+	@Column(name="mobile_number")
+	private String mobileNumber;
 	
 	public CustomerDetails() {
       super();
     }
 	public CustomerDetails(String userId, String firstName, String lastName, Date dateOfBirth, String address,
-			String country, String pinCode, String password, String securityAnswer, String role) {
+			String country, String pinCode, String password, String securityAnswer, String role,String mobileNumber) {
 		super();
 		this.username = userId;
 		this.firstName = firstName;
@@ -52,6 +54,7 @@ public class CustomerDetails {
 		this.password = password;
 		this.securityAnswer = securityAnswer;
 		this.role = role;
+		this.mobileNumber=mobileNumber;
 	}
 	
 	public CustomerDetails(CustomerDetailsDTO customerDetailsDTO) {
@@ -66,6 +69,7 @@ public class CustomerDetails {
 		this.password = customerDetailsDTO.getPassword();
 		this.securityAnswer = customerDetailsDTO.getSecurityAnswer();
 		this.role = "user";
+		this.mobileNumber=customerDetailsDTO.getMobileNumber();
 	}
 	
 	
@@ -128,6 +132,12 @@ public class CustomerDetails {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 	@Override
 	public String toString() {

@@ -21,7 +21,7 @@ public class OtpSystemRestController {
 	
 	private Map<String,OtpDetails> otpData=new HashMap<>();
 	private static String USER_NAME="AC8ea130464bcd9ca52c1e9b13292e6dee";
-	private static String PASSWORD="aa4a5e9f680345f967344f30f132d0b7";
+	private static String PASSWORD="8e522c2461cfc81ba43640e6993930c8";
 	
 	static{
 		
@@ -36,10 +36,10 @@ public class OtpSystemRestController {
 		otpDetails.setMobileNumber(mobileNumber);
 		otpDetails.setOtp(String.valueOf((int)((Math.random())*(10000-1000))+9999));
 		otpDetails.setExpTime(System.currentTimeMillis()+300000);
-		System.out.println("------Expiry Time--------"+otpDetails.getExpTime());
+		//System.out.println("------Expiry Time--------"+otpDetails.getExpTime());
 		otpData.put(mobileNumber, otpDetails);
 		Message.creator(new PhoneNumber(mobileNumber), new PhoneNumber("+12055123837"),
-		         "Your OTP from Explore Canada is"+otpDetails.getOtp()).create();
+		         "Your OTP from Explore Canada is :"+otpDetails.getOtp()).create();
 		return new ResponseEntity<>("OTP send yo your mobile number",HttpStatus.OK);
 		
 	}
@@ -70,7 +70,7 @@ public class OtpSystemRestController {
 							return new ResponseEntity<>("OTP is verified",HttpStatus.OK);
 						}
 						else {
-							return new ResponseEntity<Object>("Invalid OTP",HttpStatus.BAD_REQUEST);
+							return new ResponseEntity<>("Invalid OTP",HttpStatus.BAD_REQUEST);
 						}
 					}
 					
@@ -78,7 +78,7 @@ public class OtpSystemRestController {
 			}
 			
 		}
-		return null;
+		return new ResponseEntity<>("something went wrong",HttpStatus.BAD_GATEWAY);
 		
 	}
 

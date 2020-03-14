@@ -7,5 +7,6 @@ import com.ExploreCanada.packages.entities.PackageDetails;
 public interface PackageListDao {
 	
 	public List<PackageDetails> findAll();
+	public List<PackageDetails> findByCity(String cityName);
 
 }
