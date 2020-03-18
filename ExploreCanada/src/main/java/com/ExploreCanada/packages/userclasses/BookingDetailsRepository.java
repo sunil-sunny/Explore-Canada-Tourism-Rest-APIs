@@ -6,6 +6,4 @@ import com.ExploreCanada.packages.entities.BookingDetails;
 
 public interface BookingDetailsRepository extends JpaRepository<BookingDetails, String> {
 	
-	
-
 }

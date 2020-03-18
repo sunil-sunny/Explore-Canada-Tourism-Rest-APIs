@@ -16,5 +16,4 @@ public class BookDetailsIDaoImpl implements BookDetailsDao {
 		boolean isInserted=bookingDetailsRepository.existsById(bookingDetails.getBookingID());
 	return isInserted;
 	}
-
 }
