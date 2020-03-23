@@ -55,6 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// dont authenticate this particular request
 		httpSecurity.authorizeRequests().antMatchers("/api/register").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/api/packagelist").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/api/userdetails/*").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/login/***").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/authenticate").permitAll().anyRequest().authenticated().and().
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

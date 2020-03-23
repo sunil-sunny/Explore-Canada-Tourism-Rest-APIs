@@ -27,7 +27,7 @@ public class BookDetailsServiceImpl implements BookDetailsService {
 		bookedTicket.setJourneyDate(bookingQueryDetails.getJourneyDate());
 		BookingDetails bookDetails=new BookingDetails(bookedTicket);
 		boolean booked=bookDetailsDao.bookTicket(bookDetails);
-		System.out.println(booked);
+		//System.out.println(booked);
 		return bookedTicket;
 	}
 	

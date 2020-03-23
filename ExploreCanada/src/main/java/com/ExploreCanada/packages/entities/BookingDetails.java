@@ -16,7 +16,7 @@ public class BookingDetails {
 	@Id
 	@Column(name="ticket_id")
 	private String bookingID;
-	@Column(name="customer_id")
+	@Column(name="user_id")
 	private String customerID;
 	@Column(name="from_place")
 	private String fromPlace;
@@ -24,6 +24,7 @@ public class BookingDetails {
 	private String toPlace;
 	@Temporal(TemporalType.DATE)
 	private Date journeyDate;
+	
 	
 	public BookingDetails(String bookingID, String customerID, String fromPlace, String toPlace, Date journeyDate) {
 		super();
@@ -83,6 +84,12 @@ public class BookingDetails {
 
 	public void setJourneyDate(Date journeyDate) {
 		this.journeyDate = journeyDate;
+	}
+
+	@Override
+	public String toString() {
+		return "BookingDetails [bookingID=" + bookingID + ", customerID=" + customerID + ", fromPlace=" + fromPlace
+				+ ", toPlace=" + toPlace + ", journeyDate=" + journeyDate + "]";
 	}
 
 	
