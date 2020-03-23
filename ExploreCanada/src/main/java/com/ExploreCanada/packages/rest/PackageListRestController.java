@@ -1,6 +1,8 @@
 package com.ExploreCanada.packages.rest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +36,12 @@ public class PackageListRestController {
 	}
 	
 	@GetMapping("/packagelist")
-	public List<PackageDetailsDTO> findAll(){
+	public Map<String,List<PackageDetailsDTO>> findAll(){
 		
-		String username=jwtTokenFilter.getUsername();
-		System.out.println("*********************"+username  );
-		return packageListService.findAll();
+		Map<String,List<PackageDetailsDTO>> output=new HashMap<String, List<PackageDetailsDTO>>();
+		output.put("packagelist", packageListService.findAll());
+		
+		return output;
 	}
 	
 	@GetMapping("/packagelist/{city}")
