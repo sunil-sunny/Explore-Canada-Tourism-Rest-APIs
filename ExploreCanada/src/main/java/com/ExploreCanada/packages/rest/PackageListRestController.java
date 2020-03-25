@@ -41,6 +41,11 @@ public class PackageListRestController {
 		return output;
 	}
 	
+	@GetMapping("/packagedetails")
+	public List<PackageDetailsDTO> findDetails(){
+		return packageListService.findAll();
+	}
+	
 	@GetMapping("/packagelist/{city}")
 	public List<PackageDetailsDTO> findByCity(@PathParam(value = "city") String city){
 		

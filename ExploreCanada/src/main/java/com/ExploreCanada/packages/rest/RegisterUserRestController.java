@@ -2,6 +2,9 @@ package com.ExploreCanada.packages.rest;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import com.ExploreCanada.packages.service.RegisterUserService;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class RegisterUserRestController {
 	
 	@Autowired
@@ -19,18 +23,30 @@ public class RegisterUserRestController {
 	
 	
 	@PostMapping(value = "/register")
-    public CustomerDetailsDTO registerCustomer(@RequestBody @Valid CustomerDetailsDTO theCustomerDetailsDTO) {
+    public ResponseEntity<Object> registerCustomer(@RequestBody @Valid CustomerDetailsDTO theCustomerDetailsDTO) {
 		
-		return registerUserService.registerCustomer(theCustomerDetailsDTO);
-		
+		if(registerUserService.registerCustomer(theCustomerDetailsDTO).getUserId().compareToIgnoreCase("")==0) {
+			return new ResponseEntity<>("success",HttpStatus.BAD_REQUEST);
+		}
+		else {
+			return new ResponseEntity<>("failure",HttpStatus.OK);
+		}
+			
 	}
 	
 	@PostMapping(path = "/register", consumes = "application/x-www-form-urlencoded")
-    public CustomerDetailsDTO registerCustomerForm(@Valid CustomerDetailsDTO theCustomerDetailsDTO) {
+    public ResponseEntity<Object> registerCustomerForm(CustomerDetailsDTO theCustomerDetailsDTO) {
+		/*
+		 * System.out.println(theCustomerDetailsDTO.getDateOfBirth()); return
+		 * registerUserService.registerCustomer(theCustomerDetailsDTO);
+		 */
 		
-		System.out.println(theCustomerDetailsDTO.getDateOfBirth());
-		return registerUserService.registerCustomer(theCustomerDetailsDTO);
-		
+		if(registerUserService.registerCustomer(theCustomerDetailsDTO).getUserId().compareToIgnoreCase("")==0) {
+			return new ResponseEntity<>("success",HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>("Failed",HttpStatus.BAD_REQUEST);
+		}
 	}
 
 }
