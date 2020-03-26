@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,11 +21,12 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 @RestController
+@CrossOrigin("*")
 public class OtpSystemRestController {
 	
 	private static Map<String,OtpDetails> otpData=new HashMap<>();
 	private static String USER_NAME="AC8ea130464bcd9ca52c1e9b13292e6dee";
-	private static String PASSWORD="8e522c2461cfc81ba43640e6993930c8";
+	private static String PASSWORD="8a17158f2df9ba434f09a30c8be8d339";
 	
 	@Autowired
 	private JwtRequestFilter jwtTokenFilter;

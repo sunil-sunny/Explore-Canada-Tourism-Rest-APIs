@@ -26,10 +26,10 @@ public class RegisterUserRestController {
     public ResponseEntity<Object> registerCustomer(@RequestBody @Valid CustomerDetailsDTO theCustomerDetailsDTO) {
 		
 		if(registerUserService.registerCustomer(theCustomerDetailsDTO).getUserId().compareToIgnoreCase("")==0) {
-			return new ResponseEntity<>("success",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("failure",HttpStatus.BAD_REQUEST);
 		}
 		else {
-			return new ResponseEntity<>("failure",HttpStatus.OK);
+			return new ResponseEntity<>("success",HttpStatus.OK);
 		}
 			
 	}
