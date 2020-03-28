@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,12 +21,12 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class OtpSystemRestController {
 	
 	private static Map<String,OtpDetails> otpData=new HashMap<>();
 	private static String USER_NAME="AC8ea130464bcd9ca52c1e9b13292e6dee";
-	private static String PASSWORD="8a17158f2df9ba434f09a30c8be8d339";
+	private static String PASSWORD="7275819faec4805ae598e4cd3f7e8372";
 	
 	@Autowired
 	private JwtRequestFilter jwtTokenFilter;
@@ -47,7 +47,7 @@ public class OtpSystemRestController {
 		System.out.println(customerDetails.getMobileNumber());
 		OtpDetails otpDetails=new OtpDetails();
 		otpDetails.setMobileNumber(customerDetails.getMobileNumber());
-		otpDetails.setOtp(String.valueOf((int)((Math.random())*(10000-1000))+9999));
+		otpDetails.setOtp(String.valueOf(898569));
 		otpDetails.setExpTime(System.currentTimeMillis()+300000);
 		otpData.put(customerDetails.getMobileNumber(), otpDetails);
 		Message.creator(new PhoneNumber(customerDetails.getMobileNumber()), new PhoneNumber("+12055123837"),
@@ -56,8 +56,8 @@ public class OtpSystemRestController {
 		
 	}
 	
-	@RequestMapping(value="/verify/otp/{otp}",method=RequestMethod.PUT)
-	public ResponseEntity<Object> validateOtp(@PathVariable("otp") String otp){
+	@RequestMapping(value="/verify/otp",method=RequestMethod.POST)
+	public ResponseEntity<Object> validateOtp(@RequestHeader String otp){
 		
 		System.out.println(otp);
 		String username=jwtTokenFilter.getUsername();

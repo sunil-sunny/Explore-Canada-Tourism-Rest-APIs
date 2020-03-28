@@ -56,13 +56,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.authorizeRequests().antMatchers("/api/register").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/api/packagelist").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/api/packagedetails").permitAll();
-		httpSecurity.authorizeRequests().antMatchers("/api/userdetails/*").permitAll();
-		httpSecurity.authorizeRequests().antMatchers("/login/***").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/api/userdetails").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/api/bookingdetails").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/book").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/authenticate").permitAll().anyRequest().authenticated().and().
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
-	
 
 		// Add a filter to validate the tokens with every request
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

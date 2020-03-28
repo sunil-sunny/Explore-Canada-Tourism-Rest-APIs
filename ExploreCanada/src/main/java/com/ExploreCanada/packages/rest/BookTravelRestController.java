@@ -1,6 +1,7 @@
 package com.ExploreCanada.packages.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 @RestController
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class BookTravelRestController {
 	
 	private static String USER_NAME="AC8ea130464bcd9ca52c1e9b13292e6dee";

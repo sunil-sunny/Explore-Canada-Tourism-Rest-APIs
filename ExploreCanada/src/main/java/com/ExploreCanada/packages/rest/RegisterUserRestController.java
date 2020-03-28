@@ -15,7 +15,7 @@ import com.ExploreCanada.packages.service.RegisterUserService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class RegisterUserRestController {
 	
 	@Autowired

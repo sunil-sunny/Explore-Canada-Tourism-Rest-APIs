@@ -17,7 +17,7 @@ import com.ExploreCanada.packages.service.PackageListService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class PackageListRestController {
 	
 	private PackageListService packageListService;

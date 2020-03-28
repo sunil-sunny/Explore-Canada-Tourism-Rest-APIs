@@ -22,6 +22,11 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		CustomerSpecificDetails customerDetails=new CustomerSpecificDetails(customer, booklist);
 		return customerDetails;
 	}
+	
+	@Override
+	public List<BookingDetails> getCustomerBooking(String username){
+		return customerDetailsDao.getBookingDetails(username);		
+	}
 
 
 }

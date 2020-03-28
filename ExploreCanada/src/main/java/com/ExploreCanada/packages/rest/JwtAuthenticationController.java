@@ -29,7 +29,7 @@ import com.ExploreCanada.packages.Jwt.JwtTokenUtil;
 
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class JwtAuthenticationController {
 
 	@Autowired
@@ -56,10 +56,6 @@ public class JwtAuthenticationController {
 		System.out.println("Token response is "+tokenResponse);
 		RestTemplate restTemplate=new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-
-		// can set the content Type
-		//headers.setContentType(MediaType.APPLICATION_JSON);
-
 		//Can add token for the authorization
 		headers.add("security", "Basic "+token);
 		//can post and get the ResponseBean 
@@ -77,7 +73,32 @@ public class JwtAuthenticationController {
 		}
 		return ResponseEntity.ok(tokenResponse);
 	}
-
+	
+	/*
+	 * @RequestMapping(value="/validateOtp/{otp}",method = RequestMethod.POST)
+	 * public ResponseEntity<Object> validateOtp(@PathVariable String
+	 * otp,@RequestHeader("security") String security) {
+	 * 
+	 * System.out.println(otp); System.out.println(security); RestTemplate
+	 * restTemplate=new RestTemplate(); HttpHeaders headers = new HttpHeaders();
+	 * //Can add token for the authorization headers.add("security",
+	 * "Basic "+security); headers.add("otp", otp); //can post and get the
+	 * ResponseBean List<HttpMessageConverter<?>> messageConverters = new
+	 * ArrayList<HttpMessageConverter<?>>(); MappingJackson2HttpMessageConverter
+	 * converter = new MappingJackson2HttpMessageConverter(); HttpEntity<Object>
+	 * entity=new HttpEntity<Object>(headers);
+	 * converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
+	 * messageConverters.add(converter);
+	 * restTemplate.setMessageConverters(messageConverters); ResponseEntity<Object>
+	 * response=null; try {
+	 * response=restTemplate.postForObject("http://localhost:8080/verify/otp",
+	 * entity, ResponseEntity.class); } catch(Exception e) {
+	 * System.out.println("Exception catched"); } if(response==null) { response=new
+	 * ResponseEntity<Object>(HttpStatus.BAD_REQUEST); } return response;
+	 * 
+	 * 
+	 * }
+	 */
 	private void authenticate(String username, String password) throws Exception {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
